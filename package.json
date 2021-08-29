@@ -4,15 +4,21 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "test": "nyc mocha --reporter mocha-simple-html-reporter --reporter-options output=test-report.html --exit && live-server test-report.html"
   },
   "dependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-validator": "^6.12.1",
+    "mocha": "^9.1.1",
+    "mocha-simple-html-reporter": "^2.0.0",
     "morgan": "~1.9.1",
     "mysql2": "^2.3.0",
+    "nyc": "^15.1.0",
     "sequelize": "^6.6.5"
   },
   "devDependencies": {
