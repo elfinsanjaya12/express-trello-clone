@@ -8,7 +8,7 @@ module.exports = {
     port: 5432,
     dialect: 'postgres',
     dialectOptions: {
-      ssl: true,
+      ssl: { rejectUnauthorized: false },
     },
   },
   test: {
@@ -27,7 +27,7 @@ module.exports = {
     port: 5432,
     dialect: 'postgres',
     dialectOptions: {
-      ssl: true,
+      ssl: { rejectUnauthorized: false },
     },
   },
 };
