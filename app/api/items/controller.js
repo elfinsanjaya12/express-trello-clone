@@ -23,7 +23,7 @@ module.exports = {
         },
       });
 
-      res.status(200).json({ data: result });
+      res.status(200).json({ message: 'success', data: result });
     } catch (err) {
       next(err);
     }
@@ -35,7 +35,7 @@ module.exports = {
     })
       .then((item) => {
         item.update({ name }).then(() => {
-          res.status(200).json({ data: item });
+          res.status(200).json({ message: 'success', data: item });
         });
       })
       .catch((err) => {
@@ -47,7 +47,7 @@ module.exports = {
     Item.findOne({ where: { id: req.params.id } })
       .then((item) => {
         item.destroy().then(() => {
-          res.status(200).json({ data: item });
+          res.status(200).json({ message: 'success', data: item });
         });
       })
       .catch((err) => {
@@ -63,7 +63,7 @@ module.exports = {
       })
         .then((item) => {
           item.update({ TodoId: targetTodoId }).then(() => {
-            res.status(200).json({ data: item });
+            res.status(200).json({ message: 'success', data: item });
           });
         })
         .catch((err) => {

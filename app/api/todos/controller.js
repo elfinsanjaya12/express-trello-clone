@@ -23,7 +23,7 @@ module.exports = {
       const { name } = req.body;
       const result = await Todo.create({ name });
 
-      res.status(201).send({ data: result });
+      res.status(201).send({ message: 'success', data: result });
     } catch (err) {
       next(err);
     }
@@ -35,7 +35,7 @@ module.exports = {
         where: { id: req.params.id },
       });
 
-      res.status(200).json({ data: result });
+      res.status(200).json({ message: 'success', data: result });
     } catch (err) {
       next(err);
     }
@@ -47,7 +47,7 @@ module.exports = {
     })
       .then((todo) => {
         todo.update({ name }).then(() => {
-          res.status(200).json({ data: todo });
+          res.status(200).json({ message: 'success', data: todo });
         });
       })
       .catch((err) => {
@@ -58,7 +58,7 @@ module.exports = {
     Todo.findOne({ where: { id: req.params.id } })
       .then((todo) => {
         todo.destroy().then(() => {
-          res.status(200).json({ data: todo });
+          res.status(200).json({ message: 'success', data: todo });
         });
       })
       .catch((err) => {
