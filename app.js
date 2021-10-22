@@ -12,13 +12,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 app.get('/', (req, res) => {
   res.json({
     message: 'Welcome to clone Jira API ',
     version: '1.0.0',
   });
 });
-app.use(cors());
 app.use('/api', appRouter);
 
 // catch 404 and forward to error handler
