@@ -7,7 +7,7 @@ module.exports = {
         attributes: ['id', 'name'],
         include: {
           model: Item,
-          attributes: ['id', 'name'],
+          attributes: ['id', 'name', 'status'],
         },
         order: [['id', 'ASC']],
       });

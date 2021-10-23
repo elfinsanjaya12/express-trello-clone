@@ -5,7 +5,7 @@ module.exports = {
     try {
       const { name, TodoId } = req.body;
 
-      const result = await Item.create({ name, TodoId });
+      const result = await Item.create({ name, TodoId, status: 0 });
 
       res.status(201).send({ message: 'success', data: result });
     } catch (err) {
@@ -72,5 +72,28 @@ module.exports = {
     } catch (err) {
       next(err);
     }
+  },
+  updateStatus: async (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    await Item.findOne({
+      where: { id: id },
+    })
+      .then((item) => {
+        if (item) {
+          item.update({ status }).then(() => {
+            res.status(200).json({
+              message: 'success',
+              data: item,
+            });
+          });
+        }
+      })
+      .catch((err) => {
+        res
+          .status(500)
+          .json({ message: err.message || 'Internal server error' });
+      });
   },
 };
